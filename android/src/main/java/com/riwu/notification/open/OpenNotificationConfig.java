@@ -66,14 +66,4 @@ class OpenNotificationConfig {
             channelDescription = "";
         return channelDescription;
     }
-    public int getNotificationColor() {
-        try {
-            int resourceId = metadata.getInt(KEY_NOTIFICATION_COLOR);
-            return ResourcesCompat.getColor(context.getResources(), resourceId, null);
-        } catch (Exception e) {
-            Log.w(OpenNotificationModule.LOG_TAG, "Unable to find " + KEY_NOTIFICATION_COLOR + " in manifest. Falling back to default");
-        }
-        // Default
-        return -1;
-    }
 }
