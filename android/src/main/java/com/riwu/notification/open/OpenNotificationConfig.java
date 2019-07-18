@@ -31,31 +31,40 @@ class OpenNotificationConfig {
     }
 
     public String getChannelId() {
+        String channelId = null;
         try {
-            return metadata.getString(KEY_CHANNEL_ID);
+            channelId = metadata.getString(KEY_CHANNEL_ID);
         } catch (Exception e) {
             Log.w(OpenNotificationModule.LOG_TAG, "Unable to find " + KEY_CHANNEL_ID + " in manifest. Falling back to default");
         }
         // Default
-        return "rn-push-notification-channel-id";
+        if (channelId == null)
+            channelId = "rn-push-notification-channel-id";
+        return channelId;
     }
     public String getChannelName() {
+        String channelName = null;
         try {
-            return metadata.getString(KEY_CHANNEL_NAME);
+            channelName = metadata.getString(KEY_CHANNEL_NAME);
         } catch (Exception e) {
             Log.w(OpenNotificationModule.LOG_TAG, "Unable to find " + KEY_CHANNEL_NAME + " in manifest. Falling back to default");
         }
         // Default
-        return "rn-push-notification-channel";
+        if (channelName == null)
+            channelName = "rn-push-notification-channel";
+        return channelName;
     }
     public String getChannelDescription() {
+        String channelDescription = null;
         try {
-            return metadata.getString(KEY_CHANNEL_DESCRIPTION);
+            channelDescription = metadata.getString(KEY_CHANNEL_DESCRIPTION);
         } catch (Exception e) {
             Log.w(OpenNotificationModule.LOG_TAG, "Unable to find " + KEY_CHANNEL_DESCRIPTION + " in manifest. Falling back to default");
         }
         // Default
-        return "";
+        if (channelDescription == null)
+            channelDescription = "";
+        return channelDescription;
     }
     public int getNotificationColor() {
         try {
