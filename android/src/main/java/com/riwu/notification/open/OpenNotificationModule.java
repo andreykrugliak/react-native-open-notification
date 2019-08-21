@@ -43,7 +43,7 @@ public class OpenNotificationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void openChannelSettings() {
+    public void openChannelSettings(String id) {
         ReactContext reactContext = getReactApplicationContext();
         String packageName = reactContext.getPackageName();
         Intent intent = new Intent();
@@ -53,7 +53,7 @@ public class OpenNotificationModule extends ReactContextBaseJavaModule {
             intent.putExtra("android.provider.extra.APP_PACKAGE", packageName);
             intent.putExtra("app_package", packageName);
             intent.putExtra("app_uid", reactContext.getApplicationInfo().uid);
-            intent.putExtra("android.provider.extra.CHANNEL_ID", "rn-push-notification-channel-id");
+            intent.putExtra("android.provider.extra.CHANNEL_ID", id);
         } else {
             intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
             intent.addCategory(Intent.CATEGORY_DEFAULT);
