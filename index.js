@@ -1,11 +1,17 @@
-import { NativeModules, Platform, Linking } from 'react-native';
+import { NativeModules, Platform, Linking } from 'react-native'
 
-const open = () => {
-  if (Platform.OS === 'ios') {
-    Linking.openURL('app-settings:');
-  } else {
-    NativeModules.OpenNotification.open();
+const NotificationSettings = {
+  appSettingsOpen: () => {
+    if (Platform.OS === 'ios') {
+      Linking.openURL('app-settings:')
+    } else {
+      NativeModules.OpenNotification.open()
+    }
+  },
+  channelSettingsOpen: () => {
+    NativeModules.OpenNotification.openChannelSettings()
   }
-};
+}
 
-export default { open };
+
+module.exports = NotificationSettings
